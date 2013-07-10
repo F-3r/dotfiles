@@ -115,4 +115,8 @@ chruby ruby-2.0
 
 #GIT  branch in shell prompt
 
-PS1="\w$(__git_ps1)$ "
+function git_branch(){
+  __git_ps1
+}
+
+export PS1="\w\$(git_branch)$ "
