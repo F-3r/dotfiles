@@ -3,6 +3,7 @@
 	email = fernando.martinez@live.com.ar
 [core]
 	editor = emacs
+	excludesfile = /home/f-3r/.gitignore_global
 [color]
   ui = auto
 [color "branch"]
@@ -19,3 +20,5 @@
   added = yellow
   changed = green
   untracked = cyan
+[credential]
+	helper = cache

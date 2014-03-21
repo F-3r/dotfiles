@@ -1,23 +1,19 @@
 require 'irb/completion'
-ARGV.concat [ "--readline", "--prompt-mode", "simple" ]
 
 # interactive editor: use vim from within irb
-begin
-  require 'interactive_editor'
-rescue LoadError => err
-  warn "Couldn't load interactive_editor: #{err}"
-end
+# begin
+#   require 'interactive_editor'
+# rescue LoadError => err
+#   warn "Couldn't load interactive_editor: #{err}"
+# end
 
 # awesome print
-begin
-  require 'awesome_print'
-  AwesomePrint.irb!
-rescue LoadError => err
-  warn "Couldn't load awesome_print: #{err}"
-end
-
-# configure irb
-IRB.conf[:PROMPT_MODE] = :SIMPLE
+# begin
+#   require 'awesome_print'
+#   AwesomePrint.irb!
+# rescue LoadError => err
+#   warn "Couldn't load awesome_print: #{err}"
+# end
 
 # irb history
 IRB.conf[:EVAL_HISTORY] = 1000
