@@ -109,12 +109,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# include ~/bin in PATH
+PATH=$HOME/bin:$PATH
+
 # chruby
 source /usr/local/share/chruby/chruby.sh
-chruby ruby-2.0
+chruby 2.1
+source /usr/local/share/chruby/auto.sh
 
 # Git Prompt
 export PS1="\w\$(__git_ps1)$ "
-
-
-PATH=./bin:$PATH

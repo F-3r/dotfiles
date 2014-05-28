@@ -11,7 +11,7 @@ alias brackup="bundle exec rackup"
 alias brails="bundle exec rails"
 
 #emacs
-alias e="emacsclient"
+alias e="emacs"
 
 #git
 # for peer-to-peer cloning and fetching!
