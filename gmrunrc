@@ -1,0 +1,16 @@
+ShowDotFiles = 1
+TabTimeout = 0
+
+Terminal = lxterminal
+TermExec = ${Terminal} --command
+AlwaysInTerm = ssh telnet ftp lynx mc vi vim cat top sudo man info
+
+History = 1000
+
+URL_man = ${TermExec} 'man %s'
+URL_info = ${TermExec} 'info %s'
+URL_f = xdg-open %s
+URL_g = x-www-browser 'http://www.google.com/search?q=%s'
+URL_w = x-www-browser %u
+URL_r = x-www-browser 'http://ruby-doc.com/search.html?q=%s'
+URL_magnet = transmission-gtk %s
