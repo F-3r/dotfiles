@@ -1,0 +1,33 @@
+## Basic compositing effects
+compton -r 12.0 -o 0.75 -l -15.0 -t -15.0 -I 0.028 -O 0.03 -D 3 -c -f -C -F -G &
+
+## Background
+nitrogen --restore &
+
+## Panel
+(sleep 1s && tint2) &
+
+## Startup
+(sleep 2s && pnmixer) &
+(sleep 3s && conky) &
+(sleep 4s && numlockx) &
+(sleep 5s && pamac-tray) & 	
+#(sleep 6s; light-locker) &		# started automatically (in /etc/xdg/autostart)
+#(sleep 7s; xfce4-power-manager) &	# started automatically (in /etc/xdg/autostart)
+#(sleep 8s && nm-applet) & 		# started automatically (in /etc/xdg/autostart)
+#(sleep 9s && clipit) & 		# started automatically (in /etc/xdg/autostart)
+
+## DPMS - Display Power Management Settings
+## These are disabled by default to prevent auto-actions when
+## the system is idle, such as screen blanking (10 mins) or
+## suspending (1 hour).
+xset -dpms; xset s off &
+
+## Polkit agent
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+## Start xscreensaver
+xscreensaver -no-splash &
+
+## ssh-agent
+eval "$(ssh-agent)"

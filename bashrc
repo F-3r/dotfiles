@@ -24,19 +24,22 @@ source /usr/share/git/completion/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
-PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+[[ -z "$BS_ENV" ]] || export BS_ENV="<$BS_ENV>"
+PS1='[\u@\h \W$(__git_ps1 "(%s)")$BS_ENV]\$ '
 
 
 
 # Ruby
 source /usr/local/share/chruby/chruby.sh
-chruby 2.1
+chruby 2.2
 source /usr/local/share/chruby/auto.sh
+
 
 
 # Java
 export JDK_HOME=/usr/lib/jvm/default/
 export JAVA_HOME=/usr/bin/java
+
 
 
 # Android
@@ -58,3 +61,8 @@ alias gitd="git daemon --export-all --base-path=."
 
 alias aur="yaourt --noconfirm"
 alias sys="sudo systemctl"
+
+
+
+# Completion
+source $HOME/.bash_completion
