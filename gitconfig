@@ -29,4 +29,10 @@
 [credential]
   helper = cache
 [push]
-	default = simple
+  default = simple
+
+
+[alias]
+  c = checkout
+  s = status -s
+  push-amend = !git commit --amend && git push -f
