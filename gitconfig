@@ -4,28 +4,28 @@
   signingkey = 4E3E49EC6454132A
 
 [core]
-  editor = emacs
-  excludesfile = /home/f-3r/.gitignore_global
+	editor = emacs -nw
+	excludesfile = /home/f-3r/.gitignore_global
 
 [color]
-  ui = auto
+        ui = auto
 
 [color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green 
+	current = yellow reverse
+	local = yellow
+	remote = green 
 
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-  whitespace = red reverse
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
 
 [color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
+	added = yellow
+	changed = green
+	untracked = cyan
 
 [credential]
   helper = cache
@@ -36,10 +36,11 @@
 [alias]
   c = checkout
   s = status -s
+  d = diff --word-diff --compaction-heuristic
   pa = !git commit --amend && git push --force-with-lease
   pf = push --force-with-lease
+  rfp="git fetch origin/master && git rebase origin/master && git push --force-with-lease"
   current = !git rev-parse --abbrev-ref HEAD
-  regression = !git push -f origin $(git current):regression  
   commit = commit -S
   
 [commit]

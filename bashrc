@@ -1,13 +1,14 @@
 # Environment
 export EDITOR=emacs
-export TERMINAL=terminator
+export TERMINAL=xfce4-terminal
 export BROWSER=firefox
+
 shopt -s checkwinsize
 
 
 
 # Path
-PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin:/$HOME/apps/node/bin:/usr/local/heroku/bin:$PATH
 
 
 
@@ -50,9 +51,14 @@ PROMPT_COMMAND="$PROMPT_COMMAND; __git_ps1 '\u@\h:\w' ' '"
 
 
 # Android
-export ANDROID_TMP=$HOME/tmp
 export ANDROID_HOME=$HOME/apps/android/sdk
-export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
+export PATH=$HOME/apps/android-studio/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
+
+
+
+# Completion
+. /usr/share/bash-completion/bash_completion
+. $HOME/.bash_completion
 
 
 
@@ -96,7 +102,9 @@ alias gitd="git daemon --export-all --base-path=."
 alias sysc="sudo systemctl"
 export GPG_TTY=$(tty)
 
-
-
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 export OVERCOMMIT_DISABLE=1
+
+
+
