@@ -1,7 +1,7 @@
 # Environment
 export EDITOR=emacs
 export TERMINAL=terminator
-export BROWSER=chromium
+export BROWSER=firefox
 shopt -s checkwinsize
 
 
@@ -14,9 +14,10 @@ PATH=$HOME/bin:$PATH
 # History
 shopt -s histappend
 HISTCONTROL=ignoreboth
-HISTSIZE=1000
-HISTFILESIZE=2000
-
+HISTSIZE=1000000
+HISTFILESIZE=1000000
+HISTCONTROL=erasedups
+PROMPT_COMMAND="history -a"
 
 
 
@@ -37,13 +38,14 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 
-PROMPT_COMMAND='__git_ps1 "\u@\h:\w" " "'
+PROMPT_COMMAND="$PROMPT_COMMAND; __git_ps1 '\u@\h:\w' ' '"
 
 
 
 # Java
-export JAVA_HOME=$HOME/apps/jre1.8.0_101/bin
-export PATH=$JAVA_HOME:$PATH
+#export JAVA_HOME=$HOME/apps/jdk1.8.0_121
+#export CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar
+#export PATH=$JAVA_HOME/bin:$PATH
 
 
 
@@ -60,28 +62,31 @@ export PATH=$HOME/apps/node/bin:$PATH
 
 
 # Ruby
-[[ -z "$NV" ]] && {
-  source /usr/local/share/chruby/chruby.sh
-  chruby 2.3.0
-  source /usr/local/share/chruby/auto.sh
-}
-
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
 
 
 
 # SSH: add ssh key to agent the first time a terminal is open
-ssh-add -l &> /dev/null || ssh-add 
+ssh-add -l &> /dev/null || ssh-add
 
 
-# helper to open a file in emacs at a certain line using "file:line:column" syntax
-function emacs_at_line() {
-  emacs $(echo $1 | ruby -ne 'file,line = *$_.split(":")[0..1]; puts "+#{line} #{file}"')
-}
+
+# GCP
+export PATH=$HOME/apps/google-cloud-sdk/bin:$PATH
+source $HOME/apps/google-cloud-sdk/completion.bash.inc
+
+
+
+# fzf
+source ~/.fzf/config.bash
+
+
 
 # Aliases
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias e='emacs_at_line'
+alias rgrep='grep -rn --color=auto'
 
 alias be="bundle exec"
 alias t='ruby -Itest:lib'
@@ -89,3 +94,9 @@ alias t='ruby -Itest:lib'
 alias gitd="git daemon --export-all --base-path=."
 
 alias sysc="sudo systemctl"
+export GPG_TTY=$(tty)
+
+
+
+
+export OVERCOMMIT_DISABLE=1

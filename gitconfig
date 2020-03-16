@@ -1,6 +1,7 @@
 [user]
-  name = Fernando Martinez
-  email = fernando.martinez@live.com.ar
+  name = Fernando Martínez
+  email = F-3r@users.noreply.github.com
+  signingkey = 4E3E49EC6454132A
 
 [core]
   editor = emacs
@@ -28,11 +29,18 @@
 
 [credential]
   helper = cache
+
 [push]
   default = simple
-
 
 [alias]
   c = checkout
   s = status -s
-  push-amend = !git commit --amend && git push -f
+  pa = !git commit --amend && git push --force-with-lease
+  pf = push --force-with-lease
+  current = !git rev-parse --abbrev-ref HEAD
+  regression = !git push -f origin $(git current):regression  
+  commit = commit -S
+  
+[commit]
+  gpgsign = true
